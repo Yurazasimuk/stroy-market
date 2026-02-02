@@ -1,26 +1,60 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <title>Будівельний магазин</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог - Будівельний магазин</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .catalog-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        nav a { margin: 0 10px; text-decoration: none; color: blue; }
+        header { text-align: center; padding: 20px; background: #f8f9fa; }
+    </style>
 </head>
 <body>
 
 <header>
-  <h1>Будівельний магазин </h1>
-  <nav>
-    <a href="index.html">Головна</a>
-    <a href="catalog.html">Каталог</a>
-    <a href="cart.html">Кошик</a>
-    <a href="admin.html">Адмін</a>
-    <a href="contacts.html">Контакти</a>
-  </nav>
+    <h1>Будівельний магазин</h1>
+    <nav>
+        <a href="index.html">Головна/Каталог</a>
+        <a href="cart.html">Кошик</a>
+        <a href="admin.html">Адмін</a>
+        <a href="contacts.html">Контакти</a>
+    </nav>
+
+    <div class="categories" style="margin-top: 20px;">
+        <button onclick="filterCategory('всі')">Всі товари</button>
+        <button onclick="filterCategory('сипучі')">⌛ Сипучі</button>
+        <button onclick="filterCategory('цегла')">🧱 Цегла</button>
+        <button onclick="filterCategory('інструмент')">🛠 Інструмент</button>
+    </div>
+    
+    <div style="margin-top: 15px;">
+        <input type="text" id="search-input" placeholder="Пошук товарів..." style="padding: 10px; width: 60%; max-width: 400px; border-radius: 20px; border: 1px solid #ccc;">
+    </div>
 </header>
 
 <main>
-  <p>Веб-застосунок для автоматизації роботи будівельного магазину.</p>
+    <div id="catalog" class="catalog-container"></div>
 </main>
+
 <div id="call-back-btn" onclick="toggleCallForm()" style="position: fixed; bottom: 20px; right: 20px; background: #28a745; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; font-size: 24px;">
     📞
 </div>
@@ -30,6 +64,10 @@
     <input type="tel" id="call-phone" placeholder="Ваш телефон" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
     <button onclick="sendQuickCall()" style="width: 100%; background: #28a745; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">Чекаю дзвінка</button>
 </div>
+
+<script src="main.js"></script>
+<script src="catalog-products.js"></script>
+<script src="catalog.js"></script>
+
 </body>
 </html>
-
