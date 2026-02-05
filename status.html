@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статус замовлення | ARS-STROY</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="page-tracking">
+
+<header class="green-srv-header">
+    <div class="green-srv-container header-layout">
+        <div class="header-col-left">
+            <a href="index.html" class="green-srv-logo">
+                <i class="fas fa-leaf"></i> <span>ARS-STROY</span>
+            </a>
+        </div>
+        <div class="header-col-center">
+            <nav class="green-srv-nav">
+                <a href="index.html">Каталог</a>
+                <a href="delivery.html">Доставка</a>
+                <a href="about.html">Про нас</a>
+                <a href="contacts.html">Контакти</a>
+            </nav>
+        </div>
+        <div class="header-col-right">
+            <div class="green-cart-btn" onclick="openCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="tracking-layout">
+
+    <div class="tracking-wrapper">
+        <div class="tracking-card fade-in-up">
+            <div class="tracking-icon">
+                <i class="fas fa-box-open"></i>
+            </div>
+            <h1>Де моє замовлення?</h1>
+            <p class="subtitle">Введіть номер замовлення з SMS, щоб дізнатися статус доставки.</p>
+
+            <div class="tracking-form-group">
+                <div class="input-with-icon">
+                    <i class="fas fa-hashtag"></i>
+                    <input type="text" id="order-input" placeholder="Наприклад: 10542">
+                </div>
+                <button id="check-btn" class="btn-check-status">
+                    ПЕРЕВІРИТИ <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <div id="status-result" class="status-result"></div>
+        </div>
+
+        <div class="tracking-info fade-in-up delay-1">
+            <div class="info-item">
+                <i class="fas fa-clock"></i>
+                <span>Обробка до 24 годин</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>Безпечна доставка</span>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <p>&copy; 2026 ARS-STROY. Всі права захищені.</p>
+    </div>
+</footer>
+
+<div class="modal-overlay" id="modal-overlay" onclick="closeCart()"></div>
+<div class="cart-modal" id="cart-modal">
+    <div class="cart-header">
+        <h2> Кошик</h2>
+        <button class="close-btn" onclick="closeCart()">×</button>
+    </div>
+    <div id="cart-items-container" class="cart-items"></div>
+    <div id="empty-cart-msg">Кошик порожній </div>
+    <div class="cart-footer">
+        <div class="total-price">Разом: <span id="total-price">0</span> грн</div>
+    </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+    document.getElementById('check-btn').addEventListener('click', function() {
+        const val = document.getElementById('order-input').value;
+        const resDiv = document.getElementById('status-result');
+
+        if(!val) {
+            alert("Введіть номер замовлення!");
+            return;
+        }
+
+        resDiv.innerHTML = '<div class="loader" style="margin-top:15px; color:#00d2b4;"><i class="fas fa-spinner fa-spin"></i> Шукаємо...</div>';
+
+        setTimeout(() => {
+            if(val % 2 === 0) {
+                resDiv.innerHTML = `
+                    <div class="status-success" style="margin-top:15px;">
+                        <h3 style="margin:0 0 5px 0; font-size:16px;"><i class="fas fa-check-circle"></i> Замовлення #${val} знайдено!</h3>
+                        <p style="margin:0; font-size:14px;">Статус: <b>В дорозі</b>. Кур'єр буде сьогодні.</p>
+                    </div>
+                `;
+            } else {
+                resDiv.innerHTML = `
+                    <div class="status-error" style="margin-top:15px;">
+                        <i class="fas fa-exclamation-circle"></i> Замовлення не знайдено. Перевірте номер.
+                    </div>
+                `;
+            }
+        }, 1500);
+    });
+</script>
+</body>
+</html>

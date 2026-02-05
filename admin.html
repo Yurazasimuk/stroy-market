@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адмін-панель - ARS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { background-color: #f4f4f4; padding: 20px; }
+        .admin-box {
+            background: white; max-width: 500px; margin: 30px auto; padding: 30px;
+            border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .admin-box h2 { text-align: center; color: var(--ars-dark); margin-top: 0; }
+        label { font-weight: bold; margin-top: 15px; display: block; color: #555; }
+        input { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+
+        .btn-danger {
+            background: #dc3545; color: white; border: none; padding: 10px;
+            border-radius: 5px; cursor: pointer; margin-top: 10px; width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header style="margin-bottom: 20px;">
+        <a href="index.html" class="logo">🌿 ARS-ADMIN</a>
+        <nav>
+            <a href="index.html">⬅️ На сайт</a>
+        </nav>
+    </header>
+
+    <div class="admin-box">
+        <h2>🛠 Додати товар</h2>
+
+        <label>Назва товару:</label>
+        <input type="text" id="p-name" placeholder="Наприклад: Шпатель">
+
+        <label>Ціна (число):</label>
+        <input type="number" id="p-price" placeholder="Наприклад: 50">
+
+        <label>Посилання на фото:</label>
+        <input type="text" id="p-img" placeholder="https://...">
+
+        <button class="btn-green" style="width:100%; margin-top:20px;" onclick="saveProduct()">➕ Додати на сайт</button>
+
+        <hr style="margin: 20px 0;">
+        <button class="btn-danger" onclick="clearMyProducts()">🗑 Видалити всі мої товари</button>
+    </div>
+
+    <script>
+        function saveProduct() {
+            const name = document.getElementById('p-name').value;
+            const price = document.getElementById('p-price').value;
+            let img = document.getElementById('p-img').value;
+
+            if(!name || !price) {
+                alert("Введіть назву і ціну!");
+                return;
+            }
+            if(!img) {
+                img = "https://content.ars.ua/no-photo.png"; // Заглушка, якщо немає фото
+            }
+
+            // Створюємо об'єкт товару
+            const newProduct = {
+                id: Date.now(), // Унікальний ID на основі часу
+                name: name,
+                price: Number(price),
+                image: img
+            };
+
+            // 1. Беремо старі товари з пам'яті
+            let myProducts = JSON.parse(localStorage.getItem('myProducts')) || [];
+
+            // 2. Додаємо новий
+            myProducts.push(newProduct);
+
+            // 3. Зберігаємо назад у пам'ять
+            localStorage.setItem('myProducts', JSON.stringify(myProducts));
+
+            alert('✅ Товар додано! Перейдіть на "Головну", щоб побачити.');
+
+            // Очищаємо поля
+            document.getElementById('p-name').value = '';
+            document.getElementById('p-price').value = '';
+            document.getElementById('p-img').value = '';
+        }
+
+        function clearMyProducts() {
+            if(confirm("Ви точно хочете видалити всі додані вами товари?")) {
+                localStorage.removeItem('myProducts');
+                alert("Всі ваші товари видалено.");
+            }
+        }
+    </script>
+
+</body>
+</html>

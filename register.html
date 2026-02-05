@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація | ARS-STROY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Manrope', sans-serif; }
+        body { height: 100vh; display: flex; background: #f8fafc; overflow: hidden; }
+
+        /* --- ЛІВА ЧАСТИНА --- */
+        .auth-image-side {
+            flex: 1.3;
+            position: relative; overflow: hidden;
+            display: flex; flex-direction: column; justify-content: space-between;
+            padding: 50px; color: white;
+        }
+
+        .bg-image {
+            position: absolute; inset: 0;
+            background: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600&auto=format&fit=crop') no-repeat center center/cover;
+            animation: kenBurns 25s infinite alternate-reverse ease-in-out;
+            z-index: 0;
+        }
+        @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.15); } }
+
+        .auth-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(16, 185, 129, 0.85));
+            z-index: 1; backdrop-filter: blur(2px);
+        }
+
+        .auth-content { position: relative; z-index: 2; animation: fadeInSlow 1.5s ease; }
+        .brand-logo { font-size: 32px; font-weight: 800; display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; }
+        .quote-box h2 { font-size: 42px; line-height: 1.1; margin-bottom: 15px; text-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+
+        /* --- ПРАВА ЧАСТИНА --- */
+        .auth-form-side {
+            flex: 1; display: flex; align-items: center; justify-content: center;
+            padding: 40px; background: #ffffff; position: relative;
+        }
+
+        .form-wrapper { width: 100%; max-width: 420px; }
+
+        /* Анімації */
+        .reveal { opacity: 0; transform: translateY(20px); animation: slideUpFade 0.8s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+        .d-1 { animation-delay: 0.1s; }
+        .d-2 { animation-delay: 0.2s; }
+        .d-3 { animation-delay: 0.3s; }
+        .d-4 { animation-delay: 0.4s; }
+        .d-5 { animation-delay: 0.5s; }
+
+        .header-text h1 { font-size: 34px; color: #0f172a; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .header-text p { color: #64748b; margin-bottom: 25px; font-size: 16px; }
+
+        /* Inputs */
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; font-size: 14px; font-weight: 600; color: #334155; margin-bottom: 6px; }
+        .input-wrapper { position: relative; }
+        .input-wrapper i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 18px; transition: 0.3s; }
+
+        input {
+            width: 100%; padding: 16px 16px 16px 50px;
+            border: 2px solid #e2e8f0; border-radius: 16px;
+            font-size: 16px; color: #1e293b; background: #f8fafc;
+            transition: 0.3s; outline: none;
+        }
+        input:focus { border-color: #10b981; background: #fff; box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.15); transform: translateY(-2px); }
+        input:focus + i { color: #10b981; }
+
+        /* Button Style - Updated to match Login */
+        .btn-submit {
+            width: 100%; padding: 18px;
+            background: #0f172a; /* ТЕПЕР ТЕМНИЙ, ЯК У ЛОГІНІ */
+            color: white;
+            border: none; border-radius: 16px; font-size: 16px; font-weight: 700;
+            cursor: pointer; transition: 0.3s; margin-top: 10px;
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1);
+        }
+        .btn-submit:hover {
+            background: #10b981; /* ПРИ НАВЕДЕННІ - ЗЕЛЕНИЙ */
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px -10px rgba(16, 185, 129, 0.4);
+        }
+
+        /* --- СОЦМЕРЕЖІ --- */
+        .divider {
+            display: flex; align-items: center; text-align: center;
+            margin: 20px 0; color: #94a3b8; font-size: 13px; font-weight: 500;
+        }
+        .divider::before, .divider::after { content: ''; flex: 1; border-bottom: 1px solid #e2e8f0; }
+        .divider span { padding: 0 10px; }
+
+        .social-row { display: flex; gap: 15px; justify-content: space-between; }
+
+        .soc-btn {
+            flex: 1; display: flex; align-items: center; justify-content: center;
+            padding: 14px; border-radius: 14px; border: 2px solid #e2e8f0;
+            background: white; cursor: pointer; transition: 0.3s;
+            color: #334155; font-size: 20px;
+        }
+        .soc-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .soc-btn.google:hover { color: #DB4437; border-color: #ffe4e1; background: #fff5f5; }
+        .soc-btn.apple:hover { color: #000; border-color: #d4d4d8; background: #fafafa; }
+        .soc-btn.fb:hover { color: #4267B2; border-color: #e0e7ff; background: #eff6ff; }
+
+        .footer-links { margin-top: 25px; text-align: center; color: #64748b; font-size: 15px; }
+        .footer-links a { color: #0f172a; text-decoration: none; font-weight: 700; }
+
+        #error-msg {
+            background: #fee2e2; color: #ef4444; border: 1px solid #fca5a5;
+            padding: 10px; border-radius: 12px; text-align: center; font-weight: 600;
+            display: none; margin-top: 10px; font-size: 14px;
+        }
+
+        @keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInSlow { from { opacity: 0; } to { opacity: 1; } }
+        @media (max-width: 900px) { .auth-image-side { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="auth-image-side">
+        <div class="bg-image"></div>
+        <div class="auth-overlay"></div>
+        <div class="auth-content"><a href="index.html" class="brand-logo"><i class="fas fa-leaf"></i> ARS-STROY</a></div>
+        <div class="auth-content quote-box"><h2>Створіть акаунт <br>за 1 хвилину.</h2></div>
+    </div>
+
+    <div class="auth-form-side">
+        <div class="form-wrapper">
+            <div class="header-text reveal d-1">
+                <h1>Реєстрація 🚀</h1>
+                <p>Заповніть дані для створення профілю.</p>
+            </div>
+
+            <form onsubmit="handleRegister(event)">
+                <div class="input-group reveal d-2">
+                    <label>Ваше Ім'я</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="reg-name" placeholder="Іван Іванов" required>
+                        <i class="far fa-user"></i>
+                    </div>
+                </div>
+
+                <div class="input-group reveal d-3">
+                    <label>Електронна пошта</label>
+                    <div class="input-wrapper">
+                        <input type="email" id="reg-email" placeholder="example@gmail.com" required>
+                        <i class="far fa-envelope"></i>
+                    </div>
+                </div>
+
+                <div class="input-group reveal d-4">
+                    <label>Пароль</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="reg-pass" placeholder="******" required minlength="6">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit reveal d-5">Створити акаунт</button>
+
+                <div class="reveal d-5">
+                    <div class="divider"><span>або зареєструватись</span></div>
+                    <div class="social-row">
+                        <button type="button" class="soc-btn google" onclick="socialLogin('Google')"><i class="fab fa-google"></i></button>
+                        <button type="button" class="soc-btn apple" onclick="socialLogin('Apple')"><i class="fab fa-apple"></i></button>
+                        <button type="button" class="soc-btn fb" onclick="socialLogin('Facebook')"><i class="fab fa-facebook-f"></i></button>
+                    </div>
+                </div>
+
+                <div id="error-msg"></div>
+            </form>
+
+            <div class="footer-links reveal d-5">Вже є акаунт? <a href="login.html">Увійти</a></div>
+        </div>
+    </div>
+
+    <script>
+        function handleRegister(e) {
+            e.preventDefault();
+            const name = document.getElementById('reg-name').value;
+            const email = document.getElementById('reg-email').value.trim().toLowerCase();
+            const password = document.getElementById('reg-pass').value;
+            const errorMsg = document.getElementById('error-msg');
+            const btn = document.querySelector('.btn-submit');
+
+            let usersDB = JSON.parse(localStorage.getItem('usersDB')) || [];
+            if (usersDB.find(user => user.email === email)) {
+                errorMsg.innerHTML = 'Ця пошта вже зареєстрована!';
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            usersDB.push({ name, email, password });
+            localStorage.setItem('usersDB', JSON.stringify(usersDB));
+            localStorage.setItem('currentUser', name);
+
+            btn.innerHTML = '<i class="fas fa-check"></i> Готово!';
+            btn.style.background = '#10b981'; // При успіху стає зеленим
+            setTimeout(() => window.location.href = 'index.html', 1000);
+        }
+
+        function socialLogin(provider) {
+            alert(`Реєстрація через ${provider} успішна! (Демо)`);
+            localStorage.setItem('currentUser', `New User (${provider})`);
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

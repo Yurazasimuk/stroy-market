@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гарантія та повернення | ARS-STROY</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="page-warranty">
+
+<header class="green-srv-header">
+    <div class="green-srv-container header-layout">
+        <div class="header-col-left">
+            <a href="index.html" class="green-srv-logo">
+                <i class="fas fa-leaf"></i> <span>ARS-STROY</span>
+            </a>
+        </div>
+        <div class="header-col-center">
+            <nav class="green-srv-nav">
+                <a href="index.html">Каталог</a>
+                <a href="delivery.html">Доставка</a>
+                <a href="about.html">Про нас</a>
+                <a href="contacts.html">Контакти</a>
+            </nav>
+        </div>
+        <div class="header-col-right">
+            <div class="green-cart-btn" onclick="openCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="warranty-hero fade-in-up">
+        <div class="hero-inner">
+            <div class="hero-icon-box">
+                <i class="fas fa-shield-halved"></i>
+            </div>
+            <h1>Купуйте без ризиків</h1>
+            <p>Ми дотримуємося закону та здорового глузду. Якщо товар не підійшов — ми повернемо гроші.</p>
+        </div>
+    </section>
+
+    <div class="warranty-container fade-in-up delay-1">
+
+        <div class="warranty-features">
+            <div class="feature-card">
+                <div class="icon-circle">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3>14 днів на роздуми</h3>
+                <p>Ви можете повернути товар протягом 2-х тижнів, якщо він вам просто не сподобався.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-circle">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <h3>Офіційна гарантія</h3>
+                <p>На електроінструмент та техніку діє гарантія від виробника (від 12 до 36 місяців).</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-circle">
+                    <i class="fas fa-rotate-left"></i>
+                </div>
+                <h3>Легкий обмін</h3>
+                <p>Виявили брак? Ми замінимо товар на новий або повернемо повну вартість.</p>
+            </div>
+        </div>
+
+        <section class="return-rules">
+            <div class="rules-box success">
+                <div class="rules-head">
+                    <i class="fas fa-check-circle"></i>
+                    <h2>Ми приймемо товар, якщо:</h2>
+                </div>
+                <ul>
+                    <li>Є чек або накладна про покупку</li>
+                    <li>Упаковка ціла та неушкоджена</li>
+                    <li>Товар не був у використанні</li>
+                    <li>Збережені всі заводські пломби та ярлики</li>
+                </ul>
+            </div>
+
+            <div class="rules-box warning">
+                <div class="rules-head">
+                    <i class="fas fa-times-circle"></i>
+                    <h2>Повернення неможливе, якщо:</h2>
+                </div>
+                <ul>
+                    <li>Минуло більше 14 днів з моменту покупки</li>
+                    <li>Товар має сліди використання</li>
+                    <li>Пошкоджена упаковка або неповна комплектація</li>
+                    <li>Товар входить до переліку тих, що не підлягають поверненню</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="return-steps-section">
+            <h2 class="steps-title">Процедура повернення</h2>
+            <div class="return-steps">
+
+                <div class="r-step-card">
+                    <div class="step-num">01</div>
+                    <h4>Заявка</h4>
+                    <p>Зателефонуйте нам або напишіть у підтримку про намір повернути товар.</p>
+                </div>
+
+                <div class="r-step-card">
+                    <div class="step-num">02</div>
+                    <h4>Відправка</h4>
+                    <p>Принесіть товар у магазин або відправте "Новою Поштою".</p>
+                </div>
+
+                <div class="r-step-card">
+                    <div class="step-num">03</div>
+                    <h4>Кошти</h4>
+                    <p>Ми перевіримо товар та повернемо гроші на картку протягом 3-х днів.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <p>&copy; 2026 ARS-STROY. Всі права захищені.</p>
+    </div>
+</footer>
+
+<div class="modal-overlay" id="modal-overlay" onclick="closeCart()"></div>
+<div class="cart-modal" id="cart-modal">
+    <div class="cart-header">
+        <h2> Кошик</h2>
+        <button class="close-btn" onclick="closeCart()">×</button>
+    </div>
+    <div id="cart-items-container" class="cart-items"></div>
+    <div id="empty-cart-msg">Кошик порожній </div>
+    <div class="cart-footer">
+        <div class="total-price">Разом: <span id="total-price">0</span> грн</div>
+    </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

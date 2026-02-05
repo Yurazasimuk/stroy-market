@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Про нас | ARS-STROY</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="green-about-body">
+
+    <header class="green-srv-header animate-down">
+        <div class="green-srv-container header-layout">
+            <div class="header-col-left">
+                <a href="index.html" class="green-srv-logo">
+                    <i class="fas fa-leaf"></i> <span>ARS-STROY</span>
+                </a>
+            </div>
+            <div class="header-col-center">
+                <nav class="green-srv-nav">
+                    <a href="index.html">Каталог</a>
+                    <a href="services.html">Послуги</a>
+                    <a href="about.html" class="active-link">Про нас</a>
+                    <a href="contacts.html">Контакти</a>
+                </nav>
+            </div>
+            <div class="header-col-right">
+                <div class="green-cart-btn" onclick="openCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="about-hero-section">
+        <div class="about-hero-content animate-fade-up">
+            <h1>Відкрийте для себе комфорт</h1>
+            <p>Бо ваша оселя варта найкращого</p>
+        </div>
+    </div>
+
+    <main class="green-srv-main-wrapper">
+        <div class="green-srv-float-box animate-fade-up delay-1">
+
+            <section class="about-features-grid">
+                <div class="about-feature-item animate-fade-up delay-2">
+                    <div class="about-icon-circle"><i class="fas fa-history"></i></div>
+                    <h3>Наша Історія</h3>
+                    <p>Становлення почалося ще в <b>1994 році</b> у місті Тернопіль. З маленького магазину ми виросли у мережу, яка займає провідні позиції на ринку.</p>
+                </div>
+
+                <div class="about-feature-item animate-fade-up delay-3">
+                    <div class="about-icon-circle"><i class="fas fa-users"></i></div>
+                    <h3>Наша команда</h3>
+                    <p>Компанія об'єднує понад <b>700 висококваліфікованих фахівців</b>, які спільно працюють для забезпечення якісного сервісу.</p>
+                </div>
+
+                <div class="about-feature-item animate-fade-up delay-4">
+                    <div class="about-icon-circle"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h3>Соціальна відповідальність</h3>
+                    <p>Ми підтримуємо наших захисників із <b>ЗСУ</b> та локальний бізнес через фінансову допомогу і гуманітарні проєкти.</p>
+                </div>
+            </section>
+
+            <div class="about-big-image animate-fade-up delay-5">
+                <div class="about-overlay-card">
+                    <h2>З нами ваші мрії втілюються у життя</h2>
+                    <p>Завітайте до наших магазинів та переконайтеся в якості особисто.</p>
+                    <a href="index.html" class="btn-about-link">До каталогу <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="green-srv-footer">
+        © 2026 ARS-STROY. Надихаємо на зміни з 1994 року.
+    </footer>
+
+    <div class="modal-overlay" id="modal-overlay" onclick="closeCart()"></div>
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-header">
+            <h2>🛒 Кошик</h2>
+            <button class="close-btn" onclick="closeCart()">&times;</button>
+        </div>
+        <div id="cart-items-container" class="cart-items"></div>
+        <div id="empty-cart-msg">Кошик порожній </div>
+        <div class="cart-footer">
+            <div class="total-price">Разом: <span id="total-price">0</span> грн</div>
+            <div id="order-form" class="order-form" style="display:none;">
+                <input type="text" id="client-name" placeholder="👤 Ім'я">
+                <input type="tel" id="client-phone" placeholder="📞 Телефон">
+                <button class="btn-green-full" onclick="sendToTelegram()">✅ Замовити</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
