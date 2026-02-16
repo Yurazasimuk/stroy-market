@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакти | APEX-STROY</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="page-contacts-vibrant">
+
+<header class="green-srv-header">
+    <div class="green-srv-container header-layout">
+        <div class="header-col-left">
+            <a href="index.html" class="green-srv-logo">
+                <i class="fas fa-leaf"></i> <span>APEX-STROY</span>
+            </a>
+        </div>
+        <div class="header-col-center">
+            <nav class="green-srv-nav">
+                <a href="index.html">Каталог</a>
+                <a href="delivery.html">Доставка</a>
+                <a href="about.html">Про нас</a>
+                <a href="contacts.html" class="active-link">Контакти</a>
+            </nav>
+        </div>
+        <div class="header-col-right">
+            <div class="green-cart-btn" onclick="openCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="contacts-hero-vibrant">
+        <div class="hero-content">
+            <h1>Ми завжди на зв'язку</h1>
+            <p>Допоможемо, підкажемо та проконсультуємо з будь-яких питань</p>
+        </div>
+        <div class="custom-shape-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <div class="contacts-wrapper-v">
+
+        <div class="cards-grid-floating">
+            <a href="tel:+380973334300" class="float-card">
+                <div class="fc-icon"><i class="fas fa-phone-alt"></i></div>
+                <h3>Гаряча лінія</h3>
+                <div class="fc-value">097 333 43 00</div>
+                <div class="fc-sub">Щодня 08:00 - 20:00</div>
+            </a>
+
+            <div class="float-card">
+                <div class="fc-icon"><i class="fas fa-map-marked-alt"></i></div>
+                <h3>Головний офіс</h3>
+                <div class="fc-value">м. Долина</div>
+                <div class="fc-sub">Івано-Франківська обл.</div>
+            </div>
+
+            <div class="float-card">
+                <div class="fc-icon"><i class="fas fa-envelope-open-text"></i></div>
+                <h3>Email підтримка</h3>
+                <div class="fc-value">shop@apex-stroy.ua</div>
+                <div class="fc-sub">Відповідь за 15 хв</div>
+            </div>
+        </div>
+
+        <section class="split-section-v">
+
+            <div class="map-box-v">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d84387.89279767664!2d23.95874287669469!3d48.97368686640656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4739f0612c623771%3A0x63319024522718e8!2z0JTQvtC70LjQvdCwLCDQhtCy0LDQvdC-LdCk0YDQsNC90LrRltCy0YHRjNC60LAg0L7QsdC70LDRgdGC0YwsIDc3NTAw!5e0!3m2!1suk!2sua!4v1709220000000!5m2!1suk!2sua"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                <div class="map-tag"><i class="fas fa-location-arrow"></i> Ми тут</div>
+            </div>
+
+            <div class="form-box-v">
+                <div class="fb-head">
+                    <h2>Напишіть нам</h2>
+                    <p>Заповніть форму, і ми зв'яжемося з вами</p>
+                </div>
+
+                <form action="#">
+                    <div class="inp-group">
+                        <input type="text" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Ваше Ім'я</label>
+                        <i class="fas fa-user"></i>
+                    </div>
+
+                    <div class="inp-group">
+                        <input type="tel" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Телефон</label>
+                        <i class="fas fa-phone"></i>
+                    </div>
+
+                    <div class="inp-group">
+                        <textarea required></textarea>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Повідомлення</label>
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+
+                    <button type="submit" class="btn-gradient">
+                        Відправити <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+        </section>
+
+    </div>
+</main>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <p>© 2026 APEX-STROY. Всі права захищені.</p>
+    </div>
+</footer>
+
+<div class="modal-overlay" id="modal-overlay" onclick="closeCart()"></div>
+<div class="cart-modal" id="cart-modal">
+    <div class="cart-header">
+        <h2> Кошик</h2>
+        <button class="close-btn" onclick="closeCart()">×</button>
+    </div>
+    <div id="cart-items-container" class="cart-items"></div>
+    <div id="empty-cart-msg">Кошик порожній </div>
+    <div class="cart-footer">
+        <div class="total-price">Разом: <span id="total-price">0</span> грн</div>
+        <div id="order-form" class="order-form" style="display:none;">
+            <input type="text" id="client-name" placeholder=" Ім'я">
+            <input type="tel" id="client-phone" placeholder=" Телефон">
+            <button class="btn-green-full" onclick="sendToTelegram()"> Замовити</button>
+        </div>
+    </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

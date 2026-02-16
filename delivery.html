@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доставка та Оплата | APEX-STROY</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="page-delivery">
+
+<header class="green-srv-header">
+    <div class="green-srv-container header-layout">
+        <div class="header-col-left">
+            <a href="index.html" class="green-srv-logo">
+                <i class="fas fa-leaf"></i> <span>APEX-STROY</span>
+            </a>
+        </div>
+        <div class="header-col-center">
+            <nav class="green-srv-nav">
+                <a href="index.html">Каталог</a>
+                <a href="delivery.html" class="active">Доставка</a>
+                <a href="about.html">Про нас</a>
+                <a href="contacts.html">Контакти</a>
+            </nav>
+        </div>
+        <div class="header-col-right">
+            <div class="green-cart-btn" onclick="openCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="delivery-wrapper">
+
+    <section class="delivery-section fade-in-up">
+        <div class="section-header">
+            <h2 class="section-title">Способи доставки</h2>
+            <p class="section-subtitle">Обирайте найзручніший для вас варіант отримання товару</p>
+        </div>
+
+        <div class="cards-grid">
+
+            <div class="service-card">
+                <div class="icon-box ib-green">
+                    <i class="fas fa-store"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Самовивіз з магазину</h3>
+                    <p class="price-tag">Безкоштовно</p>
+                    <p class="card-desc">Забирайте замовлення в нашому магазині за адресою: <br><strong>м. Долина, вул. Степана-Бандери, 12</strong></p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="icon-box ib-blue">
+                    <i class="fas fa-truck-fast"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Кур'єрська доставка ARS</h3>
+                    <p class="price-tag">від 400 ₴</p>
+                    <p class="card-desc">По місту — 400 грн. За місто — 20 грн/км. Доставляємо до під'їзду. Підйом на поверх — окремо.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="icon-box ib-red">
+                    <i class="fas fa-box-open"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Нова Пошта / Delivery</h3>
+                    <p class="price-tag">За тарифами</p>
+                    <p class="card-desc">Відправка по Україні. Габаритні вантажі відправляємо тільки за передплатою 20%.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="payment-section fade-in-up delay-1">
+        <div class="section-header">
+            <h2 class="section-title">Способи оплати</h2>
+            <p class="section-subtitle">Безпечні та зручні методи розрахунку</p>
+        </div>
+
+        <div class="cards-grid">
+
+            <div class="service-card horizontal">
+                <div class="icon-box ib-dark">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Готівкою</h3>
+                    <p class="card-desc">При отриманні товару в магазині або кур'єру при доставці.</p>
+                </div>
+            </div>
+
+            <div class="service-card horizontal">
+                <div class="icon-box ib-purple">
+                    <i class="fab fa-cc-visa"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Карткою Visa/MasterCard</h3>
+                    <p class="card-desc">Оплата через термінал в магазині або онлайн на сайті (LiqPay).</p>
+                </div>
+            </div>
+
+            <div class="service-card horizontal">
+                <div class="icon-box ib-orange">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Безготівковий (з ПДВ)</h3>
+                    <p class="card-desc">Для юридичних осіб. Надаємо повний пакет документів.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="alert-block fade-in-up delay-2">
+        <div class="alert-icon"><i class="fas fa-exclamation-circle"></i></div>
+        <div class="alert-text">
+            <h4>Важливо!</h4>
+            <p>Перевіряйте цілісність товару при отриманні. У разі виявлення пошкоджень складайте акт з кур'єром або працівником пошти на місці.</p>
+        </div>
+    </div>
+
+</main>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <p>© 2026 APEX-STROY. Всі права захищені.</p>
+    </div>
+</footer>
+
+<div class="modal-overlay" id="modal-overlay" onclick="closeCart()"></div>
+<div class="cart-modal" id="cart-modal">
+    <div class="cart-header">
+        <h2>🛒 Кошик</h2>
+        <button class="close-btn" onclick="closeCart()">×</button>
+    </div>
+    <div id="cart-items-container" class="cart-items"></div>
+    <div id="empty-cart-msg">Кошик порожній </div>
+    <div class="cart-footer">
+        <div class="total-price">Разом: <span id="total-price">0</span> грн</div>
+    </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

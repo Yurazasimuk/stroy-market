@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ідеї дизайну | APEX-STROY</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        body.page-ideas {
+            padding-top: 100px;
+            font-family: 'Manrope', sans-serif;
+            background: #fcfcfc;
+        }
+
+        .ideas-container {
+            padding: 50px 20px;
+            text-align: center;
+            min-height: 60vh;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ideas-title {
+            font-size: 32px;
+            margin-bottom: 50px;
+            color: #333;
+            font-weight: 800;
+        }
+
+
+        .ideas-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+
+
+        .idea-item {
+            position: relative;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            text-decoration: none;
+            background: #eee;
+
+
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            border: 4px solid transparent;
+        }
+
+
+        .idea-item:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 210, 180, 0.25);
+            border-color: #fff;
+        }
+
+
+        .idea-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .idea-item:hover img {
+            transform: scale(1.15);
+        }
+
+
+        .idea-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        .idea-item:hover .idea-overlay {
+            background: rgba(0, 210, 180, 0.2);
+        }
+
+        .idea-text {
+            color: white;
+            font-size: 22px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+            z-index: 2;
+        }
+
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+
+        .green-srv-header {
+            background-color: #ffffff !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05) !important;
+            position: fixed !important;
+            top: 0; left: 0; width: 100%; z-index: 1000;
+        }
+
+    </style>
+</head>
+<body class="page-ideas">
+
+    <header class="green-srv-header">
+        <div class="green-srv-container header-layout">
+            <div class="header-col-left">
+                <a href="index.html" class="green-srv-logo">
+                    <i class="fas fa-leaf"></i> <span>APEX-STROY</span>
+                </a>
+            </div>
+            <div class="header-col-center">
+                <nav class="green-srv-nav">
+                    <a href="index.html">Каталог</a>
+                    <a href="delivery.html">Доставка</a>
+                    <a href="about.html">Про нас</a>
+                    <a href="contacts.html">Контакти</a>
+                </nav>
+            </div>
+            <div class="header-col-right">
+                <div class="green-cart-btn" onclick="openCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="ideas-container">
+
+        <h2 class="ideas-title">Ідеї для якої кімнати бажаєте подивитись?</h2>
+
+        <div class="ideas-grid">
+
+            <a href="#" class="idea-item" style="animation-delay: 0.1s;">
+                <img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80" alt="Ванна">
+                <div class="idea-overlay"><span class="idea-text">Ванна</span></div>
+            </a>
+
+            <a href="#" class="idea-item" style="animation-delay: 0.2s;">
+                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" alt="Кухня">
+                <div class="idea-overlay"><span class="idea-text">Кухня</span></div>
+            </a>
+
+            <a href="#" class="idea-item" style="animation-delay: 0.3s;">
+                <img src="https://images.unsplash.com/photo-1617325247661-675ab4b64ae2?auto=format&fit=crop&w=600&q=80" alt="Спальня">
+                <div class="idea-overlay"><span class="idea-text">Спальня</span></div>
+            </a>
+
+            <a href="#" class="idea-item" style="animation-delay: 0.4s;">
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80" alt="Вітальня">
+                <div class="idea-overlay"><span class="idea-text">Вітальня</span></div>
+            </a>
+
+            <a href="#" class="idea-item" style="animation-delay: 0.5s;">
+                <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=600&q=80" alt="Дитяча">
+                <div class="idea-overlay"><span class="idea-text">Дитяча</span></div>
+            </a>
+
+            <a href="#" class="idea-item" style="animation-delay: 0.6s;">
+                <img src="https://images.unsplash.com/photo-1472224371017-08207f84aaae?auto=format&fit=crop&w=600&q=80" alt="Передпокій">
+                <div class="idea-overlay"><span class="idea-text">Передпокій</span></div>
+            </a>
+
+            <a href="#" class="idea-item" style="animation-delay: 0.7s;">
+                <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=600&q=80" alt="Столова">
+                <div class="idea-overlay"><span class="idea-text">Столова</span></div>
+            </a>
+
+            <a href="#" class="idea-item" style="animation-delay: 0.8s;">
+                <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80" alt="Декор">
+                <div class="idea-overlay"><span class="idea-text">Декор</span></div>
+            </a>
+
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>APEX-STROY</h3>
+                <p>Надихаємо на зміни.</p>
+            </div>
+            <div class="footer-col">
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 APEX-STROY</div>
+    </footer>
+
+    <div class="modal-overlay" id="modal-overlay" onclick="closeCart()"></div>
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-header">
+            <h2> Кошик</h2>
+            <button class="close-btn" onclick="closeCart()">×</button>
+        </div>
+        <div id="cart-items-container" class="cart-items"></div>
+        <div id="empty-cart-msg">Кошик порожній </div>
+        <div class="cart-footer">
+            <div class="total-price">Разом: <span id="total-price">0</span> грн</div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
