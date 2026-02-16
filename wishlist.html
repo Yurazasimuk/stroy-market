@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список бажань | APEX-STROY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+
+        :root {
+            --primary: #2ecc71;
+            --primary-hover: #27ae60;
+            --dark: #1e293b;
+            --gray-light: #f8fafc;
+            --border: #e2e8f0;
+            --header-height: 80px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #f1f5f9;
+            color: var(--dark);
+            padding-top: var(--header-height);
+        }
+
+
+        .green-srv-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            background: #ffffff;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            z-index: 9999;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-layout {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .green-srv-logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 24px;
+            color: var(--dark);
+        }
+
+        .green-srv-logo i { color: var(--primary); }
+
+        .green-srv-nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        .green-srv-nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .green-srv-nav a:hover { color: var(--primary); }
+
+        .header-col-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .green-cart-btn {
+            position: relative;
+            background: var(--gray-light);
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+
+        .green-cart-btn:hover { border-color: var(--primary); }
+
+        #cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ef4444;
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 10px;
+        }
+
+
+        .wishlist-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .wishlist-header {
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .wishlist-header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .wishlist-header h1 span {
+            background: var(--primary);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 50px;
+            font-size: 18px;
+        }
+
+
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border-color: var(--primary);
+        }
+
+
+        .btn-remove-wish {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #fff;
+            color: #94a3b8;
+            border: 1px solid var(--border);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .btn-remove-wish:hover {
+            background: #fee2e2;
+            color: #ef4444;
+            border-color: #fca5a5;
+        }
+
+        .product-img {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            background: #fff;
+        }
+
+        .product-img img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .product-info h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            min-height: 50px;
+        }
+
+        .product-price {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .btn-add-cart {
+            width: 100%;
+            background: var(--dark);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .btn-add-cart:hover {
+            background: var(--primary);
+        }
+
+
+        .empty-wishlist {
+            text-align: center;
+            padding: 80px 20px;
+            background: white;
+            border-radius: 30px;
+            border: 2px dashed var(--border);
+        }
+
+        .empty-wishlist i {
+            font-size: 60px;
+            color: #cbd5e1;
+            margin-bottom: 20px;
+        }
+
+        .btn-catalog {
+            display: inline-block;
+            margin-top: 25px;
+            background: var(--primary);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-catalog:hover { background: var(--primary-hover); }
+
+        @media (max-width: 768px) {
+            .green-srv-nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="green-srv-header">
+    <div class="header-layout">
+        <div class="header-col-left">
+            <a href="index.html" class="green-srv-logo">
+                <i class="fas fa-leaf"></i> <span>APEX-STROY</span>
+            </a>
+        </div>
+        <nav class="green-srv-nav">
+            <a href="index.html">КАТАЛОГ</a>
+            <a href="delivery.html">ДОСТАВКА</a>
+            <a href="about.html">ПРО НАС</a>
+            <a href="contacts.html">КОНТАКТИ</a>
+        </nav>
+        <div class="header-col-right">
+            <div class="green-cart-btn" onclick="window.location.href='index.html#cart'">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="wishlist-container">
+    <div id="wishlist-header" class="wishlist-header">
+        <h1>Мій список бажань <span id="wish-total-count">0</span></h1>
+    </div>
+
+    <div id="wish-grid" class="wishlist-grid">
+        </div>
+
+    <div id="empty-msg" class="empty-wishlist" style="display: none;">
+        <i class="far fa-heart"></i>
+        <h2>Ваш список порожній</h2>
+        <p>Ви ще не додали жодного товару в обране.</p>
+        <a href="index.html" class="btn-catalog">Перейти до каталогу</a>
+    </div>
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        loadWishlist();
+        updateCartBadge();
+    });
+
+    function loadWishlist() {
+        const grid = document.getElementById('wish-grid');
+        const emptyMsg = document.getElementById('empty-msg');
+        const totalCount = document.getElementById('wish-total-count');
+        const header = document.getElementById('wishlist-header');
+
+
+        let wishlist = JSON.parse(localStorage.getItem('myWishlist')) || [
+            { id: 1, name: 'Цемент М-500 (25кг)', price: 165, img: 'https://images.prom.ua/3356073121_w640_h640_tsement-m-500-if.jpg' },
+            { id: 2, name: 'Цегла Червона (шт)', price: 12, img: 'https://images.prom.ua/1759491689_w640_h640_kirpich-keramicheskij-ryadovoj.jpg' }
+        ];
+
+        totalCount.innerText = wishlist.length;
+
+        if (wishlist.length === 0) {
+            grid.style.display = 'none';
+            header.style.display = 'none';
+            emptyMsg.style.display = 'block';
+            return;
+        }
+
+        grid.style.display = 'grid';
+        emptyMsg.style.display = 'none';
+        grid.innerHTML = '';
+
+        wishlist.forEach(item => {
+            grid.innerHTML += `
+                <div class="product-card">
+                    <button class="btn-remove-wish" onclick="removeWish(${item.id})" title="Видалити">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="product-img">
+                        <img src="${item.img || item.image}" alt="${item.name}">
+                    </div>
+                    <div class="product-info">
+                        <h3>${item.name}</h3>
+                        <p class="product-price">${item.price} ₴</p>
+                    </div>
+                    <button class="btn-add-cart" onclick="addToCartFromWish(${item.id})">
+                        <i class="fas fa-shopping-cart"></i> В кошик
+                    </button>
+                </div>
+            `;
+        });
+    }
+
+    function removeWish(id) {
+        let wishlist = JSON.parse(localStorage.getItem('myWishlist')) || [];
+        wishlist = wishlist.filter(item => item.id !== id);
+        localStorage.setItem('myWishlist', JSON.stringify(wishlist));
+        loadWishlist();
+    }
+
+    function addToCartFromWish(id) {
+        alert("Товар додано в кошик!");
+
+    }
+
+    function updateCartBadge() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const countElement = document.getElementById('cart-count');
+        if (countElement) countElement.innerText = cart.length;
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Каталог</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <h1>Каталог будівельних матеріалів</h1>
+  <nav>
+    <div class="categories" style="text-align: center; margin-bottom: 20px;">
+    <button onclick="filterCategory('всі')" style="cursor:pointer; padding: 8px 15px; margin: 5px; border-radius: 20px; border: 1px solid #28a745; background: #fff;">Всі товари</button>
+    <button onclick="filterCategory('сипучі')" style="cursor:pointer; padding: 8px 15px; margin: 5px; border-radius: 20px; border: 1px solid #ccc; background: #fff;">⏳ Сипучі</button>
+    <button onclick="filterCategory('цегла')" style="cursor:pointer; padding: 8px 15px; margin: 5px; border-radius: 20px; border: 1px solid #ccc; background: #fff;">🧱 Цегла</button>
+    <button onclick="filterCategory('інструмент')" style="cursor:pointer; padding: 8px 15px; margin: 5px; border-radius: 20px; border: 1px solid #ccc; background: #fff;">🛠 Інструмент</button>
+</div>
+    <div style="text-align: center; margin: 20px;">
+    <input type="text" id="search-input" placeholder=" Пошук товарів (напр. цемент)..."
+           style="padding: 12px; width: 80%; max-width: 500px; border-radius: 25px; border: 1px solid #ccc; font-size: 16px;">
+</div>
+    <a href="index.html">Головна</a>
+    <a href="catalog.html">Каталог</a>
+    <a href="cart.html">Кошик</a>
+    <a href="admin.html">Адмін</a>
+    <a href="contacts.html">Контакти</a>
+  </nav>
+</header>
+
+<main>
+  <div id="catalog" class="catalog-container"></div>
+</main>
+<div id="call-back-btn" onclick="toggleCallForm()" style="position: fixed; bottom: 20px; right: 20px; background: #28a745; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; font-size: 24px;">
+
+</div>
+
+<div id="call-form" style="display: none; position: fixed; bottom: 90px; right: 20px; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); z-index: 1000; width: 250px;">
+    <h4 style="margin-top: 0; color: #333;">Швидке питання</h4>
+    <input type="tel" id="call-phone" placeholder="Ваш телефон" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
+    <button onclick="sendQuickCall()" style="width: 100%; background: #28a745; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold;">Чекаю дзвінка</button>
+</div>
+<script src="js/catalog.js"></script>
+</body>
+</html>
